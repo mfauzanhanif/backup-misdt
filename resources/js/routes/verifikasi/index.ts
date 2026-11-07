@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
 export const pmbm = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ pmbm.definition = {
 
 /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
 pmbm.url = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -44,7 +44,7 @@ pmbm.url = (args: { kode: string | number } | [kode: string | number ] | string 
 
 /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
 pmbm.get = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -53,7 +53,7 @@ pmbm.get = (args: { kode: string | number } | [kode: string | number ] | string 
 })
 /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
 pmbm.head = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -63,7 +63,7 @@ pmbm.head = (args: { kode: string | number } | [kode: string | number ] | string
 
     /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
     const pmbmForm = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -73,7 +73,7 @@ pmbm.head = (args: { kode: string | number } | [kode: string | number ] | string
 
             /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
         pmbmForm.get = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ pmbm.head = (args: { kode: string | number } | [kode: string | number ] | string
         })
             /**
 * @see \App\Http\Controllers\PPDBController::pmbm
- * @see app/Http/Controllers/PPDBController.php:137
+ * @see app/Http/Controllers/PPDBController.php:119
  * @route '/verifikasi/pmbm/{kode}'
  */
         pmbmForm.head = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

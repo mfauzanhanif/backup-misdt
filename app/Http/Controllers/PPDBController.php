@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
-use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class PPDBController extends Controller
 {
@@ -30,11 +29,11 @@ class PPDBController extends Controller
             'tanggal_lahir.digits' => 'Tanggal lahir harus 8 angka (Contoh: 17082018)'
         ]);
 
-        try {
-            $tglLahirDb = Carbon::createFromFormat('dmY', $request->tanggal_lahir)->format('Y-m-d');
-        } catch (\Exception $e) {
+        $date = DateTime::createFromFormat('dmY', $request->tanggal_lahir);
+        if (! $date || $date->format('dmY') !== $request->tanggal_lahir) {
             return back()->withErrors(['tanggal_lahir' => 'Format tanggal lahir tidak valid.']);
         }
+        $tglLahirDb = $date->format('Y-m-d');
 
         $siswa = Candidate::where('nik', $request->nik)
             ->where('tanggal_lahir', $tglLahirDb)
@@ -44,22 +43,7 @@ class PPDBController extends Controller
             return back()->withErrors(['pesan' => 'Data tidak ditemukan. Pastikan NIK dan Tanggal Lahir sudah benar.']);
         }
 
-        $tgl = Carbon::parse($siswa->tanggal_lahir);
-        $bulanIndo = [
-            1 => 'Januari',
-            2 => 'Februari',
-            3 => 'Maret',
-            4 => 'April',
-            5 => 'Mei',
-            6 => 'Juni',
-            7 => 'Juli',
-            8 => 'Agustus',
-            9 => 'September',
-            10 => 'Oktober',
-            11 => 'November',
-            12 => 'Desember',
-        ];
-        $tanggalFormatted = $tgl->day . ' ' . $bulanIndo[$tgl->month] . ' ' . $tgl->year;
+        $tanggalFormatted = $this->formatTanggalIndo($siswa->tanggal_lahir);
 
         // Redirect ke route GET sambil membawa data
         return redirect()->route('PPDB.hasil')->with('siswa_result', [
@@ -100,9 +84,7 @@ class PPDBController extends Controller
         }
 
         // 2. Format tanggal lahir
-        $tgl = Carbon::parse($siswa->tanggal_lahir);
-        $bulanIndo = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
-        $tanggalFormatted = $tgl->day . ' ' . $bulanIndo[$tgl->month] . ' ' . $tgl->year;
+        $tanggalFormatted = $this->formatTanggalIndo($siswa->tanggal_lahir);
 
         // 3. Buat URL Validasi menggunakan kode verifikasi pendek
         if (empty($siswa->kode_verifikasi)) {
@@ -126,7 +108,7 @@ class PPDBController extends Controller
         ];
 
         // 5. Render PDF dengan ukuran F4 (Folio) -> 215.9 mm x 330.2 mm
-        $pdf = Pdf::loadView('pdf.surat-pengumuman', $dataPdf)
+        $pdf = app('dompdf.wrapper')->loadView('pdf.surat-pengumuman', $dataPdf)
             ->setPaper([0, 0, 609.45, 935.43], 'portrait');
 
         // 6. Download file dengan nama dinamis
@@ -147,9 +129,7 @@ class PPDBController extends Controller
         }
 
         // 3. Format Tanggal
-        $tgl = Carbon::parse($siswa->tanggal_lahir);
-        $bulanIndo = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
-        $tanggalFormatted = $tgl->day . ' ' . $bulanIndo[$tgl->month] . ' ' . $tgl->year;
+        $tanggalFormatted = $this->formatTanggalIndo($siswa->tanggal_lahir);
 
         // 4. Return Data Valid
         return Inertia::render('PPDB/verifikasi', [
@@ -163,5 +143,17 @@ class PPDBController extends Controller
                 'hasil_psikotes' => $siswa->hasil_psikotes->value,
             ]
         ]);
+    }
+
+    private function formatTanggalIndo(string $tanggal): string
+    {
+        $date = new DateTime($tanggal);
+        $bulanIndo = [
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember',
+        ];
+
+        return (int) $date->format('j') . ' ' . $bulanIndo[(int) $date->format('n')] . ' ' . $date->format('Y');
     }
 }
