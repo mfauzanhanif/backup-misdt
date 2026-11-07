@@ -13,7 +13,7 @@
     Options -Indexes
 
     # 4. REDIRECT PATH /pmbm KE GOOGLE FORM
-    RewriteRule ^pmbm/?$ https://forms.gle/4uyMTeHc4qVRhqRB7 [L,R=302,NC]
+    RewriteRule ^admission/?$ https://forms.gle/4uyMTeHc4qVRhqRB7 [L,R=302,NC]
 
     # 5. SILENT REWRITE: Arahkan semua request ke folder public secara diam-diam
     # Tanpa flag R=301 di sini agar browser tidak mendeteksi adanya pengalihan

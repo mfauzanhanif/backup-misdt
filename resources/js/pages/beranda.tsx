@@ -1,12 +1,12 @@
 import { Link } from '@inertiajs/react';
-// import AnnouncementModal from '@/components/AnnouncementModal';
+import AnnouncementModal from '@/components/AnnouncementModal';
 import GuestLayout from '@/layouts/GuestLayout';
 import { cn } from "../lib/utils";
 
 export default function Beranda() {
     return (
         <GuestLayout>
-            {/* <AnnouncementModal /> */}
+            <AnnouncementModal />
 
             {/* Hero Section */}
             <section className={cn('relative', 'overflow-hidden')}>
@@ -29,10 +29,10 @@ export default function Beranda() {
                         </p>
                         <div className={cn('flex', 'flex-col', 'items-center', 'justify-center', 'gap-4', 'sm:flex-row')}>
                             <Link
-                                href="/PPDB"
+                                href="/PMBM"
                                 className={cn('inline-flex', 'items-center', 'gap-2', 'rounded-xl', 'bg-white', 'px-8', 'py-3.5', 'text-sm', 'font-semibold', 'text-primary-700', 'shadow-lg', 'transition-all', 'hover:-translate-y-0.5', 'hover:shadow-xl')}
                             >
-                                Info PPDB
+                                Info PMBM
                                 <svg className={cn('h-4', 'w-4')} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>

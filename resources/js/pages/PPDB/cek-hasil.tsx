@@ -1,7 +1,7 @@
 import { useForm } from '@inertiajs/react';
-import { FormEventHandler } from 'react';
-import { prosesCek } from '@/routes/PPDB';
+import type { FormEventHandler } from 'react';
 import GuestLayout from '@/layouts/GuestLayout';
+import { prosesCek } from '@/routes/PMBM';
 
 export default function Index() {
     const { data, setData, post, processing, errors } = useForm({

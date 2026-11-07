@@ -4,7 +4,8 @@ export default function AnnouncementModal() {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const dismissed = sessionStorage.getItem('ppdb-announcement-dismissed');
+        // Mengubah key session storage agar muncul kembali di device user untuk pengumuman baru
+        const dismissed = sessionStorage.getItem('pmbm-announcement-2728-dismissed');
         if (!dismissed) {
             const timer = setTimeout(() => setIsOpen(true), 1500);
             return () => clearTimeout(timer);
@@ -13,7 +14,7 @@ export default function AnnouncementModal() {
 
     const handleClose = () => {
         setIsOpen(false);
-        sessionStorage.setItem('ppdb-announcement-dismissed', 'true');
+        sessionStorage.setItem('pmbm-announcement-2728-dismissed', 'true');
     };
 
     if (!isOpen) return null;
@@ -22,18 +23,19 @@ export default function AnnouncementModal() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
             <div className="animate-fade-in-up relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-4 text-white">
+                <div className="bg-gradient-to-r from-teal-600 to-teal-700 px-6 py-4 text-white">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
+                            {/* Menggunakan icon toa/speaker untuk pengumuman */}
                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth={2}
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                                    d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
                                 />
                             </svg>
-                            <h2 className="font-heading text-lg font-bold">PENGUMUMAN PENTING</h2>
+                            <h2 className="font-heading text-lg font-bold">PENDAFTARAN DIBUKA</h2>
                         </div>
                         <button onClick={handleClose} className="rounded-full p-1 hover:bg-white/20" aria-label="Tutup">
                             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,28 +43,34 @@ export default function AnnouncementModal() {
                             </svg>
                         </button>
                     </div>
-                    <p className="mt-1 text-sm text-red-100">PPDB T.A. 2026/2027</p>
+                    <p className="mt-1 text-sm text-teal-100">PMBM T.A. 2027/2028</p>
                 </div>
 
                 {/* Body */}
                 <div className="px-6 py-5">
-                    <div className="mb-4 rounded-xl border border-red-100 bg-red-50 p-4">
-                        <p className="mb-2 text-center text-lg font-bold text-red-700">🚫 MOHON MAAF, KUOTA SUDAH TERPENUHI</p>
-                        <p className="text-center text-sm text-red-600">PENDAFTARAN GELOMBANG 2 (15 Februari - 8 Mei 2026) RESMI DITIADAKAN</p>
+                    <div className="mb-4 rounded-xl border border-teal-100 bg-teal-50 p-4">
+                        <p className="mb-1 text-center text-lg font-bold text-teal-700">📢 PENERIMAAN MURID BARU MADRASAH</p>
+                        <p className="text-center text-sm font-medium text-teal-600">MIS DAR AL TAUHID ARJAWINANGUN</p>
                     </div>
 
                     <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                        Sehubungan dengan tingginya antusiasme masyarakat dan terpenuhinya kuota <strong>50 siswa</strong> pada Gelombang 1, maka
-                        pendaftaran gelombang 2 resmi ditiadakan.
+                        Pendaftaran Murid Baru Madrasah (PMBM) Tahun Ajaran 2027-2028 telah resmi dibuka. Segera daftarkan putra-putri Ayah/Bunda karena kuota terbatas <strong>HANYA 75 SISWA</strong>.
                     </p>
 
-                    <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                        Kami mengucapkan terima kasih yang sebesar-besarnya atas kepercayaan Ayah/Bunda kepada MI Dar Al Tauhid. Bagi calon siswa yang
-                        mendaftar dan melaksanakan psikotes, informasi terkait hasil psikotes, wawancara, dan daftar ulang akan kami sampaikan melalui
-                        WhatsApp resmi.
-                    </p>
+                    <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-center">
+                            <p className="text-xs font-bold text-teal-700">GELOMBANG 1</p>
+                            <p className="mt-1 text-sm font-semibold text-gray-800">15 Nov 2026</p>
+                            <p className="text-xs text-gray-500">s/d 22 Jan 2027</p>
+                        </div>
+                        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-center">
+                            <p className="text-xs font-bold text-teal-700">GELOMBANG 2</p>
+                            <p className="mt-1 text-sm font-semibold text-gray-800">22 Maret 2027</p>
+                            <p className="text-xs text-gray-500">s/d Kuota Terpenuhi</p>
+                        </div>
+                    </div>
 
-                    <p className="text-right text-xs font-medium text-gray-400">— Panitia PPDB MISDT</p>
+                    <p className="text-right text-xs font-medium text-gray-400">— Panitia PMBM MISDT</p>
                 </div>
 
                 {/* Footer */}
@@ -71,7 +79,7 @@ export default function AnnouncementModal() {
                         onClick={handleClose}
                         className="w-full rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
                     >
-                        Saya Mengerti
+                        Tutup Pengumuman
                     </button>
                 </div>
             </div>

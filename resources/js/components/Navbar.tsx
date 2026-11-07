@@ -7,12 +7,12 @@ const navLinks = [
     { name: 'Program Unggulan', href: '/program', routeName: 'program' },
     { name: 'Fasilitas', href: '/fasilitas', routeName: 'fasilitas' },
     {
-        name: 'PPDB',
-        href: '/PPDB',
-        routeName: 'ppdb',
+        name: 'PMBM',
+        href: '/PMBM',
+        routeName: 'pmbm',
         children: [
-            { name: 'Info PPDB', href: '/PPDB', routeName: 'ppdb' },
-            { name: 'Cek Hasil', href: '/PPDB/cek-hasil', routeName: 'cek-hasil' },
+            { name: 'Info PMBM', href: '/PMBM', routeName: 'pmbm' },
+            { name: 'Cek Hasil', href: '/PMBM/cek-hasil', routeName: 'cek-hasil' },
         ],
     },
     { name: 'Kontak', href: '/kontak', routeName: 'kontak' },

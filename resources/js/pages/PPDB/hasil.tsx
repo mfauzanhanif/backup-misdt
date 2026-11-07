@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react';
-import { cek } from '@/routes/PPDB';
 import GuestLayout from '@/layouts/GuestLayout';
+import { cek } from '@/routes/PMBM';
 
 interface Siswa {
     nama: string;
@@ -225,7 +225,7 @@ export default function Hasil({ siswa }: { siswa: Siswa }) {
                             {/* Tombol Download Surat PDF */}
                             {!isProses && (
                                 <a
-                                    href={`/PPDB/download-surat?nik=${siswa.nik}`}
+                                    href={`/PMBM/download-surat?nik=${siswa.nik}`}
                                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
                                 >
                                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

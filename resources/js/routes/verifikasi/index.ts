@@ -1,25 +1,25 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-export const ppdb = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: ppdb.url(args, options),
+export const pmbm = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: pmbm.url(args, options),
     method: 'get',
 })
 
-ppdb.definition = {
+pmbm.definition = {
     methods: ["get","head"],
-    url: '/verifikasi/ppdb/{kode}',
+    url: '/verifikasi/pmbm/{kode}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-ppdb.url = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions) => {
+pmbm.url = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { kode: args }
     }
@@ -37,56 +37,56 @@ ppdb.url = (args: { kode: string | number } | [kode: string | number ] | string 
                         kode: args.kode,
                 }
 
-    return ppdb.definition.url
+    return pmbm.definition.url
             .replace('{kode}', parsedArgs.kode.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-ppdb.get = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: ppdb.url(args, options),
+pmbm.get = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: pmbm.url(args, options),
     method: 'get',
 })
 /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-ppdb.head = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: ppdb.url(args, options),
+pmbm.head = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: pmbm.url(args, options),
     method: 'head',
 })
 
     /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-    const ppdbForm = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: ppdb.url(args, options),
+    const pmbmForm = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: pmbm.url(args, options),
         method: 'get',
     })
 
             /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-        ppdbForm.get = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: ppdb.url(args, options),
+        pmbmForm.get = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: pmbm.url(args, options),
             method: 'get',
         })
             /**
-* @see \App\Http\Controllers\PPDBController::ppdb
+* @see \App\Http\Controllers\PPDBController::pmbm
  * @see app/Http/Controllers/PPDBController.php:137
- * @route '/verifikasi/ppdb/{kode}'
+ * @route '/verifikasi/pmbm/{kode}'
  */
-        ppdbForm.head = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: ppdb.url(args, {
+        pmbmForm.head = (args: { kode: string | number } | [kode: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: pmbm.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
                             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -95,9 +95,9 @@ ppdb.head = (args: { kode: string | number } | [kode: string | number ] | string
             method: 'get',
         })
     
-    ppdb.form = ppdbForm
+    pmbm.form = pmbmForm
 const verifikasi = {
-    ppdb: Object.assign(ppdb, ppdb),
+    pmbm: Object.assign(pmbm, pmbm),
 }
 
 export default verifikasi

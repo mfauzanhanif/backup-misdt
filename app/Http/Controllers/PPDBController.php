@@ -109,7 +109,7 @@ class PPDBController extends Controller
             $siswa->kode_verifikasi = \Illuminate\Support\Str::random(16);
             $siswa->save();
         }
-        $urlValidasi = url('/verifikasi/ppdb/' . $siswa->kode_verifikasi);
+        $urlValidasi = url('/verifikasi/pmbm/' . $siswa->kode_verifikasi);
 
         // 4. Siapkan Data untuk View PDF
         $dataPdf = [

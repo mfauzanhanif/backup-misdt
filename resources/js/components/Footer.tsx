@@ -78,7 +78,7 @@ export default function Footer() {
                                 { name: 'Profil', href: '/profil' },
                                 { name: 'Program Unggulan', href: '/program' },
                                 { name: 'Fasilitas', href: '/fasilitas' },
-                                { name: 'PPDB', href: '/ppdb' },
+                                { name: 'PMBM', href: '/PMBM' },
                                 { name: 'Kontak', href: '/kontak' },
                             ].map((link) => (
                                 <li key={link.href}>

@@ -11,7 +11,11 @@ Route::get('/fasilitas', [Controller::class, 'fasilitas'])->name('fasilitas');
 Route::get('/kontak', [Controller::class, 'kontak'])->name('kontak');
 Route::get('/bio', [Controller::class, 'bio'])->name('bio');
 
-Route::prefix('PPDB')->name('PPDB.')->controller(PPDBController::class)->group(function () {
+Route::redirect('/admission', 'https://forms.gle/4uyMTeHc4qVRhqRB7');
+Route::redirect('/PPDB', '/PMBM');
+Route::redirect('/PPDB/cek-hasil', '/PMBM/cek-hasil');
+
+Route::prefix('PMBM')->name('PMBM.')->controller(PPDBController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/cek-hasil', 'cek')->name('cek');
     Route::post('/proses-cek', 'prosesCek')->name('prosesCek');
@@ -19,4 +23,4 @@ Route::prefix('PPDB')->name('PPDB.')->controller(PPDBController::class)->group(f
     Route::get('/download-surat', 'downloadSurat')->name('downloadSurat');
 });
 
-Route::get('/verifikasi/ppdb/{kode}', [PPDBController::class, 'verifikasi'])->name('verifikasi.ppdb');
+Route::get('/verifikasi/pmbm/{kode}', [PPDBController::class, 'verifikasi'])->name('verifikasi.pmbm');
