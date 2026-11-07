@@ -1,0 +1,47 @@
+import { Head } from '@inertiajs/react';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { cn } from "../lib/utils";
+
+interface GuestLayoutProps {
+    title?: string;
+    children: React.ReactNode;
+}
+
+export default function GuestLayout({ title, children }: GuestLayoutProps) {
+    return (
+        <>
+            <Head title={title}>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+                    rel="stylesheet"
+                />
+                <meta name="description" content="MI Dar Al Tauhid - Madrasah Ibtidaiyah di Arjawinangun, Cirebon. Mencetak generasi berakhlakul karimah, cerdas, dan kreatif." />
+
+                {/* Open Graph / Facebook / WhatsApp */}
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={title ? `${title} - MIS Dar Al Tauhid` : 'MIS Dar Al Tauhid'} />
+                <meta property="og:description" content="Madrasah Ibtidaiyah di Arjawinangun, Cirebon. Mencetak generasi berakhlakul karimah, cerdas, dan kreatif." />
+                <meta property="og:image" content="/images/Gedung.webp" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title ? `${title} - MIS Dar Al Tauhid` : 'MIS Dar Al Tauhid'} />
+                <meta name="twitter:description" content="Madrasah Ibtidaiyah di Arjawinangun, Cirebon." />
+                <meta name="twitter:image" content="/images/Gedung.webp" />
+            </Head>
+
+            <div className={cn('min-h-screen', 'bg-gray-50')}>
+                <Navbar />
+                <main className={cn('pt-16', 'lg:pt-20')}>
+                    {children}
+                </main>
+                <Footer />
+                <WhatsAppFAB />
+            </div>
+        </>
+    );
+}
